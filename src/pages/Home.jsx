@@ -154,7 +154,7 @@ function Home() {
             </p>
             <button 
               className="btn-futuristic"
-              onClick={() => navigate('/habits')}
+              onClick={() => navigate('/manage-habits')}
             >
               Dodaj Nawyk
             </button>
