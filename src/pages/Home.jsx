@@ -100,12 +100,6 @@ function Home() {
               >
                 Zaloguj się
               </button>
-              <button 
-                className="btn-futuristic btn-secondary-futuristic"
-                onClick={() => navigate('/register')}
-              >
-                Zarejestruj się
-              </button>
             </div>
           </div>
         </Container>
