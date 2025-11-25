@@ -1,10 +1,4 @@
-# Projekt Vite + React + PostgreSQL
-
-Aplikacja Full-Stack z React (Vite), Bootstrap, SCSS i PostgreSQL.
-
-## 🚀 Technologie
-
-### Frontend
+Frontend
 - **Vite** - Build tool
 - **React** - Biblioteka UI
 - **React Router** - Routing
@@ -12,34 +6,29 @@ Aplikacja Full-Stack z React (Vite), Bootstrap, SCSS i PostgreSQL.
 - **SCSS** - Style
 - **Axios** - HTTP client
 
-### Backend
+Backend
 - **Node.js** + **Express** - Serwer API
 - **PostgreSQL** - Baza danych
 - **pg** - PostgreSQL client
 - **cors** - Cross-Origin Resource Sharing
 - **dotenv** - Zmienne środowiskowe
 
-## 📋 Wymagania
 
+
+Wymagane
 - Node.js (v16+)
 - PostgreSQL (v12+)
 - npm lub yarn
 
-## 🛠️ Instalacja
-
-### 1. Sklonuj repozytorium i zainstaluj zależności
+Instalacja
 
 ```bash
 npm install
 ```
 
-### 2. Skonfiguruj bazę danych PostgreSQL
+Skonfiguruj bazę danych PostgreSQL
 
-#### Zainstaluj PostgreSQL (jeśli jeszcze nie masz)
-- Windows: Pobierz z https://www.postgresql.org/download/
-- Zapamiętaj hasło dla użytkownika `postgres`
-
-#### Utwórz bazę danych
+Utwórz bazę danych
 
 Otwórz **pgAdmin** lub terminal PostgreSQL i wykonaj:
 
@@ -66,7 +55,7 @@ INSERT INTO users (name, email) VALUES
   ('Piotr Wiśniewski', 'piotr.wisniewski@example.com');
 ```
 
-### 3. Skonfiguruj zmienne środowiskowe
+Skonfiguruj zmienne środowiskowe
 
 Skopiuj `.env.example` do `.env` i uzupełnij danymi:
 
@@ -80,9 +69,7 @@ DB_NAME=projekt_db
 PORT=5000
 ```
 
-## 🚀 Uruchomienie
-
-### Uruchom backend (serwer API)
+Uruchom backend (serwer API)
 
 ```bash
 npm run server:dev
@@ -90,7 +77,7 @@ npm run server:dev
 
 Serwer uruchomi się na: `http://localhost:5000`
 
-### Uruchom frontend (React)
+Uruchom frontend (React)
 
 W nowym terminalu:
 
@@ -100,7 +87,7 @@ npm run dev
 
 Aplikacja będzie dostępna na: `http://localhost:5173`
 
-## 📁 Struktura projektu
+Struktura projektu
 
 ```
 projekt/
@@ -134,39 +121,6 @@ projekt/
 └── package.json
 ```
 
-## 🔌 API Endpoints
-
-### Health Check
-- `GET /api/health` - Sprawdza połączenie z bazą danych
-
-### Users (CRUD)
-- `GET /api/users` - Pobierz wszystkich użytkowników
-- `GET /api/users/:id` - Pobierz użytkownika po ID
-- `POST /api/users` - Utwórz nowego użytkownika
-- `PUT /api/users/:id` - Zaktualizuj użytkownika
-- `DELETE /api/users/:id` - Usuń użytkownika
-
-## 🎯 Funkcjonalności
-
-### Strona główna (Home)
-- Prezentacja technologii
-- Responsywne karty z Bootstrap
-
-### Zarządzanie użytkownikami (Users)
-- ✅ Lista użytkowników z bazy danych
-- ✅ Dodawanie nowych użytkowników
-- ✅ Edycja użytkowników
-- ✅ Usuwanie użytkowników
-- ✅ Pełna walidacja formularzy
-
-### O nas (About)
-- Informacje o projekcie
-
-### Kontakt (Contact)
-- Formularz kontaktowy
-
-## 🧪 Testowanie API
-
 Możesz przetestować API używając curl:
 
 ```bash
@@ -180,9 +134,7 @@ curl http://localhost:5000/api/users
 curl -X POST http://localhost:5000/api/users -H "Content-Type: application/json" -d "{\"name\":\"Test User\",\"email\":\"test@example.com\"}"
 ```
 
-## 🐛 Troubleshooting
 
-### Błąd połączenia z bazą danych
 1. Sprawdź czy PostgreSQL jest uruchomiony
 2. Zweryfikuj dane w pliku `.env`
 3. Sprawdź czy baza `projekt_db` istnieje
