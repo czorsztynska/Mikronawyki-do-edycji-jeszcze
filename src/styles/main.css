@@ -1,0 +1,504 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes float-particles {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-40px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-20px) translateX(5px);
+  }
+}
+@keyframes water-ripple {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
+  }
+  25% {
+    opacity: 0.3;
+    transform: scale(1.02) translateY(-5px);
+    filter: blur(1px);
+  }
+  50% {
+    opacity: 0.28;
+    transform: scale(1.01) translateY(-3px);
+    filter: blur(0.5px);
+  }
+  75% {
+    opacity: 0.32;
+    transform: scale(1.03) translateY(-7px);
+    filter: blur(1.5px);
+  }
+}
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: linear-gradient(-45deg, #000000, #000814, #001428, #000a14);
+  background-size: 400% 400%;
+  animation: gradient-animation 15s ease infinite;
+}
+.app-container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(0, 51, 102, 0.08) 0%, transparent 40%), radial-gradient(circle at 80% 20%, rgba(30, 144, 255, 0.06) 0%, transparent 40%), radial-gradient(circle at 40% 80%, rgba(0, 255, 255, 0.05) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+  animation: float-particles 20s ease-in-out infinite;
+}
+.app-container::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(2px 2px at 20% 30%, rgba(0, 51, 102, 0.2), transparent), radial-gradient(2px 2px at 60% 70%, rgba(30, 144, 255, 0.15), transparent), radial-gradient(1px 1px at 50% 50%, rgba(0, 255, 255, 0.12), transparent), radial-gradient(1px 1px at 80% 10%, rgba(0, 51, 102, 0.15), transparent);
+  background-size: 200px 200px, 300px 300px, 150px 150px, 250px 250px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.25;
+  animation: water-ripple 8s ease-in-out infinite;
+}
+
+main {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.page-content {
+  padding: 3rem 0;
+  min-height: calc(100vh - 200px);
+  animation: fadeInUp 0.6s ease-out;
+}
+.page-content > * {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.futuristic-card {
+  background: rgba(5, 5, 5, 0.9);
+  border: 1px solid rgba(30, 144, 255, 0.3);
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px 0 rgba(30, 144, 255, 0.2), inset 0 0 30px rgba(0, 255, 255, 0.03), 0 0 50px rgba(0, 51, 102, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.futuristic-card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, rgba(0, 51, 102, 0.3), rgba(30, 144, 255, 0.3), rgba(0, 255, 255, 0.3));
+  border-radius: 20px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+  filter: blur(10px);
+}
+.futuristic-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(0, 255, 255, 0.6);
+  box-shadow: 0 16px 50px 0 rgba(30, 144, 255, 0.3), inset 0 0 40px rgba(0, 255, 255, 0.08), 0 0 80px rgba(0, 51, 102, 0.2);
+}
+.futuristic-card:hover::before {
+  opacity: 1;
+}
+
+.btn-futuristic {
+  background: linear-gradient(135deg, #1E90FF 0%, #0066cc 100%);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  padding: 12px 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3), 0 0 20px rgba(30, 144, 255, 0.15);
+}
+.btn-futuristic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-futuristic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(0, 51, 102, 0.2));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.btn-futuristic:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(30, 144, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.25), inset 0 0 20px rgba(0, 255, 255, 0.15);
+}
+.btn-futuristic:hover::before {
+  left: 100%;
+}
+.btn-futuristic:hover::after {
+  opacity: 1;
+}
+.btn-futuristic:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.btn-secondary-futuristic {
+  background: linear-gradient(135deg, #00FFFF 0%, #00cccc 100%);
+  color: #000000;
+  text-shadow: none;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3), 0 0 20px rgba(0, 255, 255, 0.15);
+}
+
+.neon-text {
+  color: #00FFFF;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.25), 0 0 40px rgba(0, 255, 255, 0.15);
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.25), 0 0 40px rgba(0, 255, 255, 0.15);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.4), 0 0 80px rgba(0, 255, 255, 0.25);
+  }
+}
+.streak-display {
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #00FFFF 0%, #003366 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.35s;
+  transform-origin: 50% 50%;
+}
+
+.habit-card {
+  background: rgba(5, 5, 5, 0.7);
+  border: 1px solid rgba(30, 144, 255, 0.25);
+  border-radius: 15px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.habit-card:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(0, 255, 255, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2);
+}
+.habit-card.completed {
+  border-color: rgba(0, 255, 255, 0.4);
+  background: rgba(0, 255, 255, 0.08);
+}
+
+.form-control {
+  background: rgba(5, 5, 5, 0.7);
+  border: 1px solid rgba(30, 144, 255, 0.3);
+  border-radius: 10px;
+  color: white;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+}
+.form-control:focus {
+  background: rgba(5, 5, 5, 0.85);
+  border-color: #00FFFF;
+  color: white;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3), inset 0 0 10px rgba(0, 255, 255, 0.08);
+  outline: none;
+}
+.form-control::-moz-placeholder {
+  color: rgba(30, 144, 255, 0.4);
+}
+.form-control::placeholder {
+  color: rgba(30, 144, 255, 0.4);
+}
+
+.form-label {
+  color: #00FFFF;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.navbar-futuristic {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.98) 0%, rgba(0, 8, 20, 0.98) 100%) !important;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  border-bottom: 2px solid rgba(0, 255, 255, 0.4);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 255, 255, 0.2);
+  position: relative;
+  transition: all 0.3s ease;
+}
+.navbar-futuristic::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 51, 102, 0.6) 20%, rgba(0, 255, 255, 0.7) 50%, rgba(30, 144, 255, 0.6) 80%, transparent 100%);
+  animation: pulse-border 3s ease-in-out infinite;
+}
+.navbar-futuristic a, .navbar-futuristic button {
+  transition: all 0.3s ease;
+  position: relative;
+}
+.navbar-futuristic a::after, .navbar-futuristic button::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00FFFF, #003366);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+.navbar-futuristic a:hover::after, .navbar-futuristic button:hover::after {
+  width: 80%;
+}
+.navbar-futuristic .navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.navbar-futuristic .nav-link {
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.navbar-futuristic .nav-link:hover {
+  color: #00FFFF !important;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    opacity: 0.5;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.5);
+  }
+}
+.footer-futuristic {
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.98) 50%);
+  border-top: 2px solid rgba(0, 255, 255, 0.3);
+  padding: 2rem 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 255, 255, 0.15);
+}
+
+.countdown-timer {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00FFFF;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(5, 5, 5, 0.7);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 255, 255, 0.25);
+}
+
+.icon-option {
+  font-size: 2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 10px;
+}
+.icon-option:hover {
+  background: rgba(0, 255, 255, 0.12);
+  transform: scale(1.2);
+}
+.icon-option.selected {
+  background: rgba(0, 255, 255, 0.25);
+  border: 2px solid #00FFFF;
+}
+
+.color-option {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 3px solid transparent;
+}
+.color-option:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px currentColor;
+}
+.color-option.selected {
+  border-color: white;
+  box-shadow: 0 0 20px currentColor;
+}
+
+.spinner-futuristic {
+  border: 4px solid rgba(30, 144, 255, 0.3);
+  border-top: 4px solid #00FFFF;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes celebration-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+@media (max-width: 768px) {
+  .navbar-futuristic a, .navbar-futuristic button {
+    font-size: 0.85rem !important;
+  }
+  .futuristic-card {
+    padding: 1rem !important;
+  }
+  .streak-display {
+    font-size: 3rem;
+  }
+  .countdown-timer {
+    font-size: 1.5rem;
+  }
+  .btn-futuristic {
+    padding: 10px 16px !important;
+    font-size: 0.85rem !important;
+    min-width: 150px !important;
+  }
+}
+@media (max-width: 576px) {
+  .page-content {
+    padding: 1.5rem 0;
+  }
+  h1 {
+    font-size: 1.6rem !important;
+  }
+  h2, h3 {
+    font-size: 1.3rem !important;
+  }
+  h4 {
+    font-size: 1.1rem !important;
+  }
+  .streak-display {
+    font-size: 2.5rem;
+  }
+  .btn-futuristic {
+    width: 100%;
+    min-width: auto !important;
+  }
+}/*# sourceMappingURL=main.css.map */
